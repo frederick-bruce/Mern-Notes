@@ -1,29 +1,20 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import useSpeechRecognition from "../hooks/useSpeechToText";
-
-export const SpeechComponent: React.FC<{
-  onTranscription: (transcription: string) => void;
-}> = ({ onTranscription }) => {
-  const transcript = useSpeechRecognition();
-
+import { useState } from "react";
+const useSpeechRecognition = () => {
+  const [transcript, setTranscript] = useState<string>("");
   const SpeechRecognition =
     window.SpeechRecognition || (window as any).webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
 
   recognition.onresult = (event) => {
     const currentTranscript = event.results[0][0].transcript;
-    onTranscription(currentTranscript);
+    setTranscript(currentTranscript);
   };
 
-  const handleButtonClick = () => {
+  const startRecognition = () => {
     recognition.start();
   };
 
-  return (
-    <div>
-      <Button onClick={handleButtonClick}>Transcribe Speech</Button>
-      <p>Transcribed text: {transcript}</p> {/* Display the transcribed text */}
-    </div>
-  );
+  return { transcript, startRecognition };
 };
+
+export default useSpeechRecognition;
