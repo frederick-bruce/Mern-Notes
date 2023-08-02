@@ -1,4 +1,4 @@
-import app from "./app";
+import app from ".";
 import env from "./util/validateEnv";
 import mongoose from "mongoose";
 
