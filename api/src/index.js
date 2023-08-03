@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
-import notesRoutes from "../../routes/notes";
-import userRoutes from "./../routes/users";
+import notesRoutes from "../src/routes/notes";
+import userRoutes from "../src/routes/users";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import session from "express-session";
