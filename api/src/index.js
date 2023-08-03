@@ -1,13 +1,13 @@
 import "dotenv/config";
 import express from "express";
-import notesRoutes from "../routes/notes";
-import userRoutes from "../routes/users";
+import notesRoutes from "routes/notes";
+import userRoutes from "routes/users";
 import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import session from "express-session";
-import env from "../util/validateEnv";
+import env from "util/validateEnv";
 import MongoStore from "connect-mongo";
-import { requiresAuth } from "../middleware/auth";
+import { requiresAuth } from "middleware/auth";
 
 const app = express();
 
