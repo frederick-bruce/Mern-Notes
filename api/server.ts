@@ -1,4 +1,4 @@
-import app from "./src";
+import { application } from "express";
 import env from "./util/validateEnv";
 import mongoose from "mongoose";
 
@@ -8,7 +8,7 @@ mongoose
   .connect(env.MONGO_CONNECTION_STRING)
   .then(() => {
     console.log("Mongoose connected");
-    app.listen(port, () => {
+    application.listen(port, () => {
       console.log("Server running on port: " + port);
     });
   })
